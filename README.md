@@ -1,8 +1,6 @@
 # Treehouse JavaScript Techdegree
 
-<br />
-
-## Technologies Used
+### Technologies Used
 *  HTML5
 *  CSS3
 *  Sass
@@ -24,9 +22,7 @@
 *  Heroku
 *  *and Git of course!*
 
-<br />
-
-## Projects
+### Projects
 
 1.  Random Quote Generator
 2.  Pagination and Content Filter
