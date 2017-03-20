@@ -10,7 +10,7 @@
 **Task Runners:** NPM, Gulp  
 **Cloud Platform:** Heroku  
 <br />
-*and Git of course!*  
+*...and Git of course!*  
 <br />
 
 ### Projects
