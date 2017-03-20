@@ -9,7 +9,9 @@
 **Unit Tests:** Mocha, Chai  
 **Task Runners:** NPM, Gulp  
 **Cloud Platform:** Heroku  
-*and Git of course!*
+<br />
+*and Git of course!*  
+<br />
 
 ### Projects
 
