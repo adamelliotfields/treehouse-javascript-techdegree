@@ -1,7 +1,5 @@
 # Treehouse JavaScript Techdegree
 
-<br />
-
 ### Technologies Used
 *  HTML5
 *  CSS3
@@ -23,8 +21,6 @@
 *  Passport
 *  Heroku
 *  *and Git of course!*
-
-<br />
 
 ### Projects
 
