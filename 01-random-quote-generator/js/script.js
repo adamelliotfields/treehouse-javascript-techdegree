@@ -99,7 +99,7 @@ function printQuote() {
 // Invoke printQuote() on page load
 document.addEventListener('DOMContentLoaded', printQuote);
 
-// invoke printQuote() every 5 seconds
+// Invoke printQuote() every 5 seconds
 setInterval(printQuote, 5000);
 
 // Button click handler to invoke printQuote()
