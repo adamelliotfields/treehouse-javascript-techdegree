@@ -10,3 +10,7 @@
 *  `printQuote()` must be bound to a `button` click event handler as well as the `Window.setInterval()` method.
 *  When `printQuote()` is invoked, it must log the quote to the console as well.
 *  Code must be well commented!
+
+### Live Demo
+
+[index.html](https://adamelliotfields.github.io/treehouse-javascript-techdegree/01-random-quote-generator/index.html)
