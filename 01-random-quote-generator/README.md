@@ -1,7 +1,7 @@
 # Random Quote Generator
 
 ### Requirements
-*  Must have an array named `quotes` of at least 5 objects
+*  Must have an array named `quotes` of at least 5 objects.
 *  Each quote object must have `quote`, `source`, `citation`, `date`, and `tags` properties.
 *  Must have a `getRandomQuote()` function that returns a random object from the `quotes` array.
 *  `getRandomQuote()` must not return a duplicate quote until all quotes have been viewed at least once.

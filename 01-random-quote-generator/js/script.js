@@ -3,11 +3,19 @@
 // All quotes are objects stored in the quotes array
 let quotes = [
   {
+    quote: 'Use the force, Luke.',
+    source: 'Obi-Wan Kenobi',
+    citation: 'Star Wars: Episode IV - A New Hope',
+    tags: 'famous',
+    number: 1,
+    year: 1977,
+  },
+  {
     quote: 'The ability to destroy a planet is insignificant next to the power of the force.',
     source: 'Darth Vader',
     citation: 'Star Wars: Episode IV - A New Hope',
     tags: 'scary',
-    number: 1,
+    number: 2,
     year: 1977,
   },
   {
@@ -15,7 +23,7 @@ let quotes = [
     source: 'Yoda',
     citation: 'Star Wars: Episode V - The Empire Strikes Back',
     tags: 'motivational',
-    number: 2,
+    number: 3,
     year: 1980,
   },
   {
@@ -23,7 +31,7 @@ let quotes = [
     source: 'Lando Calrissian',
     citation: 'Star Wars: Episode VI - The Empire Strikes Back',
     tags: 'charming',
-    number: 3,
+    number: 4,
     year: 1980,
   },
   {
@@ -31,7 +39,7 @@ let quotes = [
     source: 'Darth Vader',
     citation: 'Star Wars: Episode VI - Return of the Jedi',
     tags: 'sad',
-    number: 4,
+    number: 5,
     year: 1983,
   },
   {
@@ -39,7 +47,7 @@ let quotes = [
     source: 'Admiral Ackbar',
     citation: 'Star Wars: Episode VI - Return of the Jedi',
     tags: 'famous',
-    number: 5,
+    number: 6,
     year: 1983,
   }
 ];
@@ -71,7 +79,7 @@ function printQuote() {
   // Append the viewed quote to the viewedQuotes array and splice from the quotes array
   viewedQuotes.push(quote);
   quotes.splice(quotes.indexOf(quote), 1);
-  // Change quote-box div HTML each time printQuote() is invoked
+  // Write quote-box div HTML each time printQuote() is invoked
   document.getElementById('quote-box').innerHTML =  `
     <p class="quote">${quote.quote}</p>
     <p class="source">${quote.source}
@@ -88,8 +96,11 @@ function printQuote() {
   }
 }
 
+// Invoke printQuote() on page load
+document.addEventListener('DOMContentLoaded', printQuote);
+
 // invoke printQuote() every 5 seconds
 setInterval(printQuote, 5000);
 
-// button click handler to invoke printQuote()
+// Button click handler to invoke printQuote()
 document.getElementById('loadQuote').addEventListener('click', printQuote);
