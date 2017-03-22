@@ -1,5 +1,3 @@
-// Note: this is using some ES2015 syntax - it is valid if you're unfamiliar
-
 // All quotes are objects stored in the quotes array
 let quotes = [
   {
@@ -56,26 +54,20 @@ let quotes = [
 let viewedQuotes = [];
 
 // Random number generator used for getRandomQuote() and getRandomColor()
-function randomNumber(num) {
-  return Math.floor(Math.random() * num);
-}
+const randomNumber = (num) => Math.floor(Math.random() * num);
 
 // Pick a random quote object from the quotes array
-function getRandomQuote() {
-  return quotes[randomNumber(quotes.length)];
-}
+const getRandomQuote = () => quotes[randomNumber(quotes.length)];
 
 // Pick a random color for the page background
-function getRandomColor() {
-  return `rgb(${randomNumber(256)}, ${randomNumber(256)}, ${randomNumber(256)})`;
-}
+const getRandomColor = () => `rgb(${randomNumber(256)}, ${randomNumber(256)}, ${randomNumber(256)})`;
 
 // Change quote and background color of page
 function printQuote() {
   // Invoke getRandomQuote() and store return value in quote variable
   const quote = getRandomQuote();
   // Log the quote number and quote to console
-  console.log(`${quote.number} ${quote.quote}`);
+  console.log(`${quote.number} - ${quote.quote}`);
   // Append the viewed quote to the viewedQuotes array and splice from the quotes array
   viewedQuotes.push(quote);
   quotes.splice(quotes.indexOf(quote), 1);
@@ -91,6 +83,7 @@ function printQuote() {
   document.getElementsByTagName('body')[0].style = `background: ${getRandomColor()}`;
   // Once quotes array has been emptied, replace with the contents of viewedQuotes and empty viewedQuotes
   if (quotes.length === 0) {
+    console.log('  - Quote refresh');
     quotes = viewedQuotes;
     viewedQuotes = [];
   }
