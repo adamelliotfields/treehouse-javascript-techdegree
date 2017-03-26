@@ -1,19 +1,23 @@
-# Treehouse JavaScript Techdegree
+![Treehouse](treehouse.png)
+
+## Treehouse JavaScript Techdegree
+
+
+#### Technologies
 
 **Languages:** HTML5, CSS3, Sass, JavaScript ES2015  
 **Frameworks:** Bootstrap 4, Express, Angular 1.x  
-**Middleware:** Passport  
 **Libraries:** jQuery  
 **Databases:** SQLite, MongoDB  
 **ORMs:** Sequelize, Mongoose  
 **Unit Tests:** Mocha, Chai  
 **Task Runners:** NPM, Gulp  
+**Authentication:** Passport  
 **Cloud Platform:** Heroku  
-<br />
-*...and Git of course!*  
-<br />
+**VCS:** Git
 
-### Projects
+
+#### Projects
 
 1.  **[Random Quote Generator](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/01-random-quote-generator)** - [Demo](https://adamelliotfields.github.io/treehouse-javascript-techdegree/01-random-quote-generator/index.html)
 2.  **[Pagination and Content Filter](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/02-pagination-content-filter)**
