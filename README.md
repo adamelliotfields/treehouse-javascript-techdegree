@@ -3,7 +3,7 @@
 ## Treehouse JavaScript Techdegree
 
 
-#### Technologies
+### Technologies
 
 **Languages:** HTML5, CSS3, Sass, JavaScript ES2015  
 **Frameworks:** Bootstrap 4, Express, Angular 1.x  
@@ -17,7 +17,7 @@
 **VCS:** Git
 
 
-#### Projects
+### Projects
 
 1.  **[Random Quote Generator](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/01-random-quote-generator)** - [Demo](https://adamelliotfields.github.io/treehouse-javascript-techdegree/01-random-quote-generator/index.html)
 2.  **[Pagination and Content Filter](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/02-pagination-content-filter)**
