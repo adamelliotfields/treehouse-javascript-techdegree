@@ -9,7 +9,7 @@ function hideStudents(start, stop) {
 
 // show students function
 function showStudents(start, stop) {
-  // show students starting at passed argument and stopping at passed argument
+  // show students starting at first passed argument and stopping at second passed argument
   Array.from(studentList[0].children).splice(start, stop).forEach( (item) => {
     item.style.display = 'block';
   });
@@ -69,6 +69,7 @@ document.getElementsByClassName('page-header')[0].innerHTML += `
 
 // search form event handler
 document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
+  // prevent default event (refresh) on form submit
   event.preventDefault();
   // get search text from input field
   const searchText = document.getElementsByTagName('input')[0].value;
@@ -80,11 +81,12 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
   hideStudents(0, studentNames.length);
   // show matching students or the first 10 students if search field is empty
   if (searchResults.length === studentNames.length) {
-    // show the first 10 students and make page 1 active
+    // show the first 10 students
     showStudents(0, 10);
+    // make page 1 active
     activePage(0);
     // hide students 11 through end of list
-    hideStudents(10, studentNames.length);
+    hideStudents(10, studentNames.length - 10);
   } else {
     // show only students who match searchResults
     searchResults.forEach( (item) => {
