@@ -27,24 +27,28 @@ function activePage(page) {
   pagination[0].firstElementChild.children[page].firstElementChild.classList.add('active');
 }
 
+// create students object containing arrays of names and emails
+const students = {
+  names: Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText),
+  emails: Array.from(studentList[0].children).map( (item) => item.children[0].children[2].innerText)
+};
+
 // append pagination div to page div
 const page = document.getElementsByClassName('page');
-page[0].innerHTML += `
-  <div class="pagination">
+page[0].innerHTML +=
+  `<div class="pagination">
     <ul>
     </ul>
-  </div>
-`;
+  </div>`;
 
 // get number of page links and append to pagination div
 const pageNumber = Math.ceil(studentList[0].children.length / 10);
 const pagination = document.getElementsByClassName('pagination');
 for (let i = 0; i < pageNumber; i ++) {
-  pagination[0].children[0].innerHTML += `
-    <li>
+  pagination[0].children[0].innerHTML +=
+    `<li>
       <a href="#">${i+1}</a>
-    </li>
-  `;
+    </li>`;
 }
 
 // add click handlers to page links
@@ -60,50 +64,50 @@ Array.from(pagination[0].firstElementChild.children).map( (item) => {
 });
 
 // append search form to page-header div
-document.getElementsByClassName('page-header')[0].innerHTML += `
-  <form class="student-search">
+document.getElementsByClassName('page-header')[0].innerHTML +=
+  `<form class="student-search">
     <input type="text" placeholder="Search for students...">
     <button type="submit">Submit</button>
-  </form>
-`;  
+  </form>`;  
 
 // search form event handler
-document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
+document.getElementsByClassName('student-search')[0].addEventListener('submit', (event) => {
   // prevent default event (refresh) on form submit
   event.preventDefault();
   // get search text from input field
   const searchText = document.getElementsByTagName('input')[0].value;
-  // create an array of student names
-  const studentNames = Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText);
-  // search studentNames array for matches or return an array of all names if search is empty
-  const searchResults = studentNames.filter( (item) => item.includes(`${searchText}`));
+  // search students.names array for matches or return an array of all names if search is empty
+  const nameResults = students.names.filter( (item) => item.includes(`${searchText}`));
+  // search students.emails array for matches or return an array of all emails if search is empty
+  const emailResults = students.emails.filter( (item) => item.includes(`${searchText}`));
   // hide all students
-  hideStudents(0, studentNames.length);
+  hideStudents(0, students.names.length);
   // show matching students or the first 10 students if search field is empty
-  if (searchResults.length === studentNames.length) {
+  if (nameResults.length === students.names.length || emailResults.length === students.names.length) {
     // show the first 10 students
     showStudents(0, 10);
     // make page 1 active
     activePage(0);
-    // hide students 11 through end of list
-    hideStudents(10, studentNames.length - 10);
+  // show only students who match nameResults
   } else {
-    // show only students who match searchResults
-    searchResults.forEach( (item) => {
-      studentList[0].children[studentNames.indexOf(item)].style.display = 'block';
+    nameResults.forEach( (item) => {
+      studentList[0].children[students.names.indexOf(item)].style.display = 'block';
+    });
+    // show only students who match emailResults
+    emailResults.forEach( (item) => {
+      studentList[0].children[students.emails.indexOf(item)].style.display = 'block';
     });
   }
-  // display a message if no results were found
-  if (searchResults.length === 0) {
+  // display a message if no results were found and no previous message has been displayed
+  if (nameResults.length === 0 && emailResults.length === 0 && pagination[0].previousSibling.innerHTML !== 'No Results') {
     pagination[0].insertAdjacentHTML('beforebegin', '<h3>No Results</h3>');
-  }
-  // delete "No Results" message if results were found
-  if (searchResults.length !== 0 && pagination[0].previousSibling.innerHTML === 'No Results') {
+  // delete previous message if results were found
+  } else if (nameResults.length !== 0 && emailResults.length !== 0 && pagination[0].previousSibling.innerHTML === 'No Results') {
     page[0].removeChild(page[0].children[2]);
   }
 });
 
 // invoke hideStudents and show only the first 10 students on page load
-hideStudents(10, studentList[0].children.length - 10);
+hideStudents(10, students.names.length - 10);
 // invoke activePage on page load
 activePage(0);
