@@ -90,7 +90,7 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
   } else {
     // show only students who match searchResults
     searchResults.forEach( (item) => {
-      studentList[0].children[studentNames.indexOf(item.toString())].style.display = 'block';
+      studentList[0].children[studentNames.indexOf(item)].style.display = 'block';
     });
   }
   // display a message if no results were found
