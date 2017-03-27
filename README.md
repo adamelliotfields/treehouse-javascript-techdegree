@@ -20,7 +20,7 @@
 ### Projects
 
 1.  **[Random Quote Generator](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/01-random-quote-generator)** - [Demo](https://adamelliotfields.github.io/treehouse-javascript-techdegree/01-random-quote-generator/index.html)
-2.  **[Pagination and Content Filter](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/02-pagination-content-filter)**
+2.  **[Pagination and Content Filter](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/02-pagination-content-filter)** - [Demo](https://adamelliotfields.github.io/treehouse-javascript-techdegree/02-pagination-content-filter/index.html)
 3.  **[Build an Interactive Form](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/03-interactive-form)**
 4.  **[Tic-Tac-Toe](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/04-tic-tac-toe)**
 5.  **[Use a Public API to Build a Search App](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/05-search-app)**
@@ -28,6 +28,6 @@
 7.  **[Build a Twitter Interface](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/07-twitter-interface)**
 8.  **[Using Gulp to Build a Front End Website](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/08-front-end-website)**
 9.  **[Single Page App](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/09-single-page-app)**
-10.  **[Build a Library Manager](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/10-library-manager)**
-11.  **[Build a Course Rating API with Express](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/11-course-rating-api)**
-12.  **[Capstone Project](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/12-capstone-project)**
+10. **[Build a Library Manager](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/10-library-manager)**
+11. **[Build a Course Rating API with Express](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/11-course-rating-api)**
+12. **[Capstone Project](https://github.com/adamelliotfields/treehouse-javascript-techdegree/tree/master/12-capstone-project)**
