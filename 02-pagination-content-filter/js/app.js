@@ -42,9 +42,8 @@ page[0].innerHTML +=
   </div>`;
 
 // get number of page links and append to pagination div
-const pageNumber = Math.ceil(studentList[0].children.length / 10);
 const pagination = document.getElementsByClassName('pagination');
-for (let i = 0; i < pageNumber; i ++) {
+for (let i = 0; i < Math.ceil(students.names.length / 10); i ++) {
   pagination[0].children[0].innerHTML +=
     `<li>
       <a href="#">${i+1}</a>
@@ -55,7 +54,7 @@ for (let i = 0; i < pageNumber; i ++) {
 Array.from(pagination[0].firstElementChild.children).map( (item) => {
   item.addEventListener('click', () => {
     // hide all students
-    hideStudents(0, studentList[0].children.length);
+    hideStudents(0, students.names.length);
     // show 10 students
     showStudents((parseInt(event.currentTarget.innerText) * 10) - 10, 10);
     // add active class to clicked page
