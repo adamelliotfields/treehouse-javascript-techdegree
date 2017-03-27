@@ -67,14 +67,13 @@ document.getElementsByClassName('page-header')[0].innerHTML += `
   </form>
 `;  
 
-// create an array of student names used for search functionality
-const studentNames = Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText);
-
 // search form event handler
 document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
   event.preventDefault();
   // get search text from input field
   const searchText = document.getElementsByTagName('input')[0].value;
+  // create an array of student names
+  const studentNames = Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText);
   // search studentNames array for matches or return an array of all names if search is empty
   const searchResults = studentNames.filter( (item) => item.includes(`${searchText}`));
   // hide all students
