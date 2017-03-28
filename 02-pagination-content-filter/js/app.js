@@ -15,18 +15,6 @@ function showStudents(start, stop) {
   });
 }
 
-// activePage function
-function activePage(page) {
-  // remove active class from previously clicked page link
-  Array.from(pagination[0].firstElementChild.children).forEach( (item) => {
-    if (item.firstElementChild.classList[0] === 'active') {
-      item.firstElementChild.classList.remove('active');
-    }
-  });
-  // add active class to current page link
-  pagination[0].firstElementChild.children[page].firstElementChild.classList.add('active');
-}
-
 // Create students object containing arrays of names and emails
 const students = {
   names: Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText),
@@ -48,6 +36,18 @@ for (let i = 0; i < Math.ceil(students.names.length / 10); i ++) {
     `<li>
       <a href="#">${i+1}</a>
     </li>`;
+}
+
+// activePage function
+function activePage(page) {
+  // remove active class from previously clicked page link
+  Array.from(pagination[0].firstElementChild.children).forEach( (item) => {
+    if (item.firstElementChild.classList[0] === 'active') {
+      item.firstElementChild.classList.remove('active');
+    }
+  });
+  // add active class to current page link
+  pagination[0].firstElementChild.children[page].firstElementChild.classList.add('active');
 }
 
 // Page link click handlers
