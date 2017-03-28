@@ -2,7 +2,7 @@
 const studentList = document.getElementsByClassName('student-list');
 function hideStudents(start, stop) {
   // hide students starting at first passed argument and stopping at second passed argument
-  Array.from(studentList[0].children).splice(start, stop).forEach( (item) => {
+  Array.from(studentList[0].children).slice(start, stop).forEach((item) => {
     item.style.display = 'none';
   });
 }
@@ -10,15 +10,15 @@ function hideStudents(start, stop) {
 // showStudents function
 function showStudents(start, stop) {
   // show students starting at first passed argument and stopping at second passed argument
-  Array.from(studentList[0].children).splice(start, stop).forEach( (item) => {
+  Array.from(studentList[0].children).slice(start, stop).forEach((item) => {
     item.style.display = 'block';
   });
 }
 
 // Create students object containing arrays of names and emails
 const students = {
-  names: Array.from(studentList[0].children).map( (item) => item.children[0].children[1].innerText),
-  emails: Array.from(studentList[0].children).map( (item) => item.children[0].children[2].innerText)
+  names: Array.from(studentList[0].children).map((item) => item.children[0].children[1].innerText),
+  emails: Array.from(studentList[0].children).map((item) => item.children[0].children[2].innerText)
 };
 
 // Append pagination div to page div
@@ -41,7 +41,7 @@ for (let i = 0; i < Math.ceil(students.names.length / 10); i ++) {
 // activePage function
 function activePage(page) {
   // remove active class from previously clicked page link
-  Array.from(pagination[0].firstElementChild.children).forEach( (item) => {
+  Array.from(pagination[0].firstElementChild.children).forEach((item) => {
     if (item.firstElementChild.classList[0] === 'active') {
       item.firstElementChild.classList.remove('active');
     }
@@ -51,7 +51,7 @@ function activePage(page) {
 }
 
 // Page link click handlers
-Array.from(pagination[0].firstElementChild.children).map( (item) => {
+Array.from(pagination[0].firstElementChild.children).map((item) => {
   item.addEventListener('click', () => {
     // hide all students
     hideStudents(0, students.names.length);
@@ -78,8 +78,8 @@ document.getElementsByClassName('student-search')[0].addEventListener('submit', 
   // create search object containing arrays of student names and emails that match searchText
   // returns arrays of all names and emails if searchText is empty
   const search = {
-    names: students.names.filter( (item) => item.includes(`${searchText}`)),
-    emails: students.emails.filter( (item) => item.includes(`${searchText}`))
+    names: students.names.filter((item) => item.includes(`${searchText}`)),
+    emails: students.emails.filter((item) => item.includes(`${searchText}`))
   };
   // hide all students
   hideStudents(0, students.names.length);
@@ -91,11 +91,11 @@ document.getElementsByClassName('student-search')[0].addEventListener('submit', 
     activePage(0);
   // show only students who match search.names
   } else {
-    search.names.forEach( (item) => {
+    search.names.forEach((item) => {
       studentList[0].children[students.names.indexOf(item)].style.display = 'block';
     });
     // show only students who match search.emails
-    search.emails.forEach( (item) => {
+    search.emails.forEach((item) => {
       studentList[0].children[students.emails.indexOf(item)].style.display = 'block';
     });
   }
