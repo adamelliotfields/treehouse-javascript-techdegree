@@ -55,7 +55,7 @@ $('#albums').on('click', 'a[href="#album"]', (event) => {
       <a href="${json.external_urls.spotify}" target="_blank"><img src="${json.images[0].url}" style="width: 350px"></a>
       <button class="spotify" id="show">Show Player</button>
       <iframe src="https://embed.spotify.com/?uri=spotify:album:${json.id}" width="350" height="0" frameborder="0" allowtransparency="true"></iframe>
-      <a href="${json.external_urls.spotify}" target="_blank" style="display: inline; color: #1ed760"><h2>${json.name}</a> (${json.release_date.slice(0, 4)})</h2>
+      <a href="${json.external_urls.spotify}" target="_blank" style="color: #222"><h2>${json.name} (${json.release_date.slice(0, 4)})</h2></a>
     `);
     // Append track list
     $(json.tracks.items).each((i, item) => {
