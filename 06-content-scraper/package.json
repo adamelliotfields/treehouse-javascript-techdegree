@@ -1,0 +1,16 @@
+{
+  "name": "content-scraper",
+  "version": "1.0.0",
+  "description": "A command-line web scraper built with Node.",
+  "main": "scraper.js",
+  "repository": "https://github.com/adamelliotfields/treehouse-javascript-techdegree.git",
+  "author": "Adam Fields",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "json2csv": "^3.7.3",
+    "moment": "^2.18.1",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.3"
+  }
+}
