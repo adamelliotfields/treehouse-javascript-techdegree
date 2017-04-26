@@ -33,7 +33,7 @@
 
 ### Instructions
 
-1. Download and extract `content-scraper.zip`.
+1. [Download](https://github.com/adamelliotfields/treehouse-javascript-techdegree/raw/master/06-content-scraper/content-scraper.zip) and extract `content-scraper.zip`.
 2. Run `npm install` or `yarn install` within the project folder to install all dependencies.
 3. Run `npm start` or `yarn start` within the project folder to run the program.
 
