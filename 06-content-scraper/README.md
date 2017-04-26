@@ -1,5 +1,7 @@
 # Build a Content Scraper
 
+![Content Scraper](content-scraper.png)
+
 ### Requirements
 
 #### Command Line Interface and Dependency Management
@@ -32,4 +34,14 @@
 ### Instructions
 
 1. Download and extract `content-scraper.zip`.
-2. Run `npm start` within the project folder.
+2. Run `npm install` or `yarn install` within the project folder to install all dependencies.
+3. Run `npm start` or `yarn start` within the project folder to run the program.
+
+### Notes
+This application was built on Node 7.9.0 and uses ES2015 features like arrow functions, string template literals, object literal shorthand properties, and promises. If you're running Node 6.10.2 (the current LTS version), you should be fine.  
+
+The scraping package is `cheerio`, which has over 3 million downloads this month. For parsing JSON to CSV, I'm using the approptiately named `json2csv` package, which has over 100,000 downloads this month.  
+
+The output text is colored and has emoji (see screenshot above). If you have a bright green or yellow background for your terminal, the text may not appear legible. Also, if you're using a bright green or yellow background in your terminal, you should apologize to your retinas.  
+
+Enjoy!
