@@ -93,7 +93,7 @@ request(`${url}/${route}`).then((body) => {
     
     // If data folder and CSV do not exist, create both
     } else {
-      functions.createDataFolderFile(createData, createCSV, fileName, csv);
+      functions.createDataFolderFile(folder, createData, disk, createCSV, fileName, csv);
     }
     
     // Log done message
@@ -101,7 +101,7 @@ request(`${url}/${route}`).then((body) => {
   
   
   // Catch errors with link requests
-  // Add requests.push(undefined) on line 50 to test
+  // Add requests.push(undefined) on line 53 to test
   }).catch(() => {
     const error = chalk.red.bold(' Aborted: There was an error scraping one of the links.');
     const errorLog = '404: Not Found - Error scraping one of the links.';
@@ -124,7 +124,7 @@ request(`${url}/${route}`).then((body) => {
     
     // If log folder and log file do not exist, create both
     } else {
-      functions.createLogFolderFile(folder, disk, createLog, createError, date, errorLog);
+      functions.createLogFolderFile(folder, createLog, disk, createError, date, errorLog);
     }
     
     // Log done message
@@ -133,7 +133,7 @@ request(`${url}/${route}`).then((body) => {
 
 
 // Catch error with initial request
-// Change either url or route variables to undefined on line 36 test
+// Change either url or route variables to undefined on line 39 test
 }).catch((response) => {
   const $ = cheerio.load(response.message);
   const statusMessage = $('h1').text();
@@ -159,7 +159,7 @@ request(`${url}/${route}`).then((body) => {
   
   // If log folder and log file do not exist, create both
   } else {
-    functions.createLogFolderFile(folder, disk, createLog, createError, date, errorLog);
+    functions.createLogFolderFile(folder, createLog, disk, createError, date, errorLog);
   }
   
   // Log done message

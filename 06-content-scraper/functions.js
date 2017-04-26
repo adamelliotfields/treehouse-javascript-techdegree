@@ -40,13 +40,13 @@ const createDataFile = (disk, createCSV, fileName, csv) => {
 /**
  * Create data folder and file
  * @param {ojbect} folder - node-emoji object
- * @param {object} disk - node-emoji object
  * @param {string} createData - Message to log to command line
+ * @param {object} disk - node-emoji object
  * @param {string} createCSV - Message to log to command line
  * @param {string} fileName - The CSV filename
  * @param {object} csv - json2csv object
  */
-const createDataFolderFile = (folder, disk, createData, createCSV, fileName, csv) => {
+const createDataFolderFile = (folder, createData, disk, createCSV, fileName, csv) => {
   console.log(folder, createData);
   fs.mkdirSync('./data', (err) => {
     console.log(chalk.red.bold('WARNING: Could not create data folder!'));
@@ -92,13 +92,13 @@ const createLogFile = (disk, createError, date, errorLog) => {
 /**
  * Create log folder and file
  * @param {object} folder - node-emoji object
- * @param {object} disk - node-emoji object
  * @param {string} createLog - Message to log to command line
+ * @param {object} disk - node-emoji object
  * @param {string} createError - Message to log to command line
  * @param {string} date - Timestamp
  * @param {string} errorLog - Message to write to log file
  */
-const createLogFolderFile = (folder, disk, createLog, createError, date, errorLog) => {
+const createLogFolderFile = (folder, createLog, disk, createError, date, errorLog) => {
   console.log(folder, createLog);
   fs.mkdirSync('./log', (err) => {
     console.log(chalk.red.bold('WARNING: Could not create log folder!'));
