@@ -6,11 +6,18 @@
   "repository": "https://github.com/adamelliotfields/treehouse-javascript-techdegree.git",
   "author": "Adam Fields",
   "license": "MIT",
+  "engines": { "node": ">=6.10.2" },
   "dependencies": {
+    "chalk": "^1.1.3",
     "cheerio": "^0.22.0",
+    "is-there": "^4.4.2",
     "json2csv": "^3.7.3",
     "moment": "^2.18.1",
+    "node-emoji": "^1.5.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.3"
+  },
+  "scripts": {
+    "start": "node scraper.js"
   }
 }
