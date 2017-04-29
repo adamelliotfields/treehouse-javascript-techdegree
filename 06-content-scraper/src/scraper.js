@@ -1,14 +1,14 @@
 /* eslint no-console: off */
 
 /**
- * 'request-promise-native' wraps the request package with native ES6 promise support
+ * 'request-promise' wraps the request package with promise support from Bluebird
  * 'bluebird' adds promise support to older versions of JavaScript
  * 'chalk' adds text styling to command line output
  * 'cheerio' parses HTML and allows DOM traversal and manipulation using jQuery syntax (3M+ dl/mo)
  * 'moment' parses and displays dates and times
  * 'json2csv' converts JSON to CSV (100k+ dl/mo)
  * 'is-there' is a replacement for the deprecated Node fs.exists method
- * 'functions' are the functions used by this applications
+ * 'functions' are the functions used by this application
  */
 const request = require('request-promise');
 const promise = require('bluebird');
