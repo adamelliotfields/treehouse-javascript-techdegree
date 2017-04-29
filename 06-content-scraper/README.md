@@ -1,7 +1,5 @@
 # Build a Content Scraper
 
-![Content Scraper](content-scraper.png)
-
 ### Requirements
 
 #### Command Line Interface and Dependency Management
@@ -32,16 +30,13 @@
 :white_check_mark: New errors append to the end of the file with a timestamp, e.g. `[Tue Feb 16 2016 13:00:55 GMT-0800 (PST)] <error message>`.
 
 ### Instructions
-
 1. [Download](https://github.com/adamelliotfields/treehouse-javascript-techdegree/raw/master/06-content-scraper/content-scraper.zip) and extract `content-scraper.zip`.
 2. Run `npm install` or `yarn install` within the project folder to install all dependencies.
 3. Run `npm start` or `yarn start` within the project folder to run the program.
 
 ### Notes
-This application was built on Node 7.9.0 and uses ES2015 features like arrow functions, string template literals, object literal shorthand properties, and promises. If you're running Node 6.10.2 (the current LTS version), you should be fine.  
+This app was written in ES2015, but I've compiled it to ES5 with Babel to support older versions of Node. The original code is in the `src` folder.  
 
-The scraping package is `cheerio`, which has over 3 million downloads this month. For parsing JSON to CSV, I'm using the approptiately named `json2csv` package, which has over 100,000 downloads this month.  
+I'm also using Bluebird for promises instead of native ES2015 promises to support older versions of Node.  
 
-The output text is colored and has emoji (see screenshot above). If you have a bright green or yellow background for your terminal, the text may not appear legible. Also, if you're using a bright green or yellow background in your terminal, you should apologize to your retinas.  
-
-Enjoy!
+I've tested it on Node 7.9.0 (latest), 6.10.2 (current LTS), and 4.8.2 (previous LTS).  

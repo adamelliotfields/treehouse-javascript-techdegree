@@ -1,122 +1,110 @@
+'use strict';
+
 /* eslint no-console: off */
 
 /**
  * 'fs' provides file system i/o
  * 'chalk' adds text styling to command line output
  */
-const fs = require('fs');
-const chalk = require('chalk');
+var fs = require('fs');
+var chalk = require('chalk');
 
 /**
  * Write data file
- * @param {object} disk - node-emoji object
- * @param {string} writeCSV - Message to log to command line
  * @param {string} fileName - CSV filename
  * @param {object} csv - json2csv object
  */
-const writeDataFile = (disk, writeCSV, fileName, csv) => {
-  console.log(disk, writeCSV);
-  fs.writeFileSync(`./data/${fileName}`, csv, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not write to CSV!'));
+var writeDataFile = function writeDataFile(fileName, csv) {
+  var writeCSV = chalk.yellow('Overwriting ' + fileName + '...');
+  console.log(writeCSV);
+  fs.writeFileSync('./data/' + fileName, csv, 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not write to CSV. Check your file permissions.'));
     if (err) throw err;
   });
 };
 
 /**
  * Create data file
- * @param {object} disk - node-emoji object
- * @param {string} createCSV - Message to log to command line
  * @param {string} fileName - CSV filename
  * @param {object} csv - json2csv object
  */
-const createDataFile = (disk, createCSV, fileName, csv) => {
-  console.log(disk, createCSV);
-  fs.writeFileSync(`./data/${fileName}`, csv, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create CSV!'));
+var createDataFile = function createDataFile(fileName, csv) {
+  var createCSV = chalk.yellow('Creating ' + fileName + '...');
+  console.log(createCSV);
+  fs.writeFileSync('./data/' + fileName, csv, 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create CSV. Check your file permissions.'));
     if (err) throw err;
   });
 };
 
 /**
  * Create data folder and file
- * @param {ojbect} folder - node-emoji object
- * @param {string} createData - Message to log to command line
- * @param {object} disk - node-emoji object
- * @param {string} createCSV - Message to log to command line
  * @param {string} fileName - The CSV filename
  * @param {object} csv - json2csv object
  */
-const createDataFolderFile = (folder, createData, disk, createCSV, fileName, csv) => {
-  console.log(folder, createData);
-  fs.mkdirSync('./data', (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create data folder!'));
+var createDataFolderFile = function createDataFolderFile(fileName, csv) {
+  var createData = chalk.yellow('Creating new data folder...');
+  var createCSV = chalk.yellow('Creating ' + fileName + '...');
+  console.log(createData);
+  fs.mkdirSync('./data', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create data folder. Check your file permissions.'));
     if (err) throw err;
   });
-  console.log(disk, createCSV);
-  fs.writeFileSync(`./data/${fileName}`, csv, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create CSV!'));
-    if (err) throw err;
-  });
-};
-
-/**
- * Append log file
- * @param {object} disk - node-emoji object
- * @param {string} appendError - Message to log to command line
- * @param {string} date - Timestamp
- * @param {string} errorLog - Message to append to log file
- */
-const appendLogFile = (disk, appendError, date, errorLog) => {
-  console.log(disk, appendError);
-  fs.appendFileSync('./log/scraper-error.log', `[${date}] ${errorLog}\n`, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not write to scraper-error.log!'));
+  console.log(createCSV);
+  fs.writeFileSync('./data/' + fileName, csv, 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create CSV. Check your file permissions.'));
     if (err) throw err;
   });
 };
 
-/**
- * Create log file
- * @param {object} disk - node-emoji object
- * @param {string} createError - Message to log to command line
- * @param {string} date - Timestamp
- * @param {string} errorLog - Message to write to log file
- */
-const createLogFile = (disk, createError, date, errorLog) => {
-  console.log(disk, createError);
-  fs.writeFileSync('./log/scraper-error.log', `[${date}] ${errorLog}\n`, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create file scraper-error.log!'));
+// Append log file
+var appendLogFile = function appendLogFile() {
+  var appendError = chalk.yellow('Logging error to scraper-error.log...');
+  var date = new Date().toString();
+  var errorLog = '404: Not Found - Error scraping one of the links.';
+  console.log(appendError);
+  fs.appendFileSync('./log/scraper-error.log', '[' + date + '] ' + errorLog + '\n', 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not write to log. Check your file permissions.'));
     if (err) throw err;
   });
 };
 
-/**
- * Create log folder and file
- * @param {object} folder - node-emoji object
- * @param {string} createLog - Message to log to command line
- * @param {object} disk - node-emoji object
- * @param {string} createError - Message to log to command line
- * @param {string} date - Timestamp
- * @param {string} errorLog - Message to write to log file
- */
-const createLogFolderFile = (folder, createLog, disk, createError, date, errorLog) => {
-  console.log(folder, createLog);
-  fs.mkdirSync('./log', (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create log folder!'));
+// Create log file
+var createLogFile = function createLogFile() {
+  var createError = chalk.yellow('Creating scraper-error.log...');
+  var date = new Date().toString();
+  var errorLog = '404: Not Found - Error scraping one of the links.';
+  console.log(createError);
+  fs.writeFileSync('./log/scraper-error.log', '[' + date + '] ' + errorLog + '\n', 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create log. Check your file permissions.'));
     if (err) throw err;
   });
-  console.log(disk, createError);
-  fs.writeFileSync('./log/scraper-error.log', `[${date}] ${errorLog}\n`, (err) => {
-    console.log(chalk.red.bold('WARNING: Could not create file scraper-error.log!'));
+};
+
+// Create log folder and file
+var createLogFolderFile = function createLogFolderFile() {
+  var createLog = chalk.yellow('Creating new log folder...');
+  var createError = chalk.yellow('Creating scraper-error.log...');
+  var date = new Date().toString();
+  var errorLog = '404: Not Found - Error scraping one of the links.';
+  console.log(createLog);
+  fs.mkdirSync('./log', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create log folder. Check your file permissions.'));
+    if (err) throw err;
+  });
+  console.log(createError);
+  fs.writeFileSync('./log/scraper-error.log', '[' + date + '] ' + errorLog + '\n', 'utf8', function (err) {
+    console.log(chalk.red.bold('WARNING: Could not create log. Check your file permissions.'));
     if (err) throw err;
   });
 };
 
 // Export functions
 module.exports = {
-  writeDataFile,
-  createDataFile,
-  createDataFolderFile,
-  appendLogFile,
-  createLogFile,
-  createLogFolderFile
+  writeDataFile: writeDataFile,
+  createDataFile: createDataFile,
+  createDataFolderFile: createDataFolderFile,
+  appendLogFile: appendLogFile,
+  createLogFile: createLogFile,
+  createLogFolderFile: createLogFolderFile
 };

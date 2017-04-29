@@ -1,3 +1,5 @@
+'use strict';
+
 /* eslint no-console: off */
 
 /**
@@ -10,158 +12,147 @@
  * 'is-there' is a replacement for the deprecated Node fs.exists method
  * 'functions' are the functions used by this applications
  */
-const request = require('request-promise-native');
-const emoji = require('node-emoji');
-const chalk = require('chalk');
-const cheerio = require('cheerio');
-const moment = require('moment');
-const json2csv = require('json2csv');
-const isThere = require('is-there');
-const functions = require('./functions');
+var request = require('request-promise');
+var promise = require('bluebird');
+var chalk = require('chalk');
+var cheerio = require('cheerio');
+var moment = require('moment');
+var json2csv = require('json2csv');
+var isThere = require('is-there');
+var functions = require('./functions');
 
-// Error messages
-const foundLog = chalk.yellow(' Log folder found...');
-const createLog = chalk.yellow(' Creating new log folder...');
-const createError = chalk.yellow(' Creating scraper-error.log...');
-const appendError = chalk.yellow(' Logging error to scraper-error.log...');
-const done = chalk.green.bold(' Done.');
-const date = new Date().toString();
-
-// Emoji for success and error messages
-const computer = emoji.get('computer');
-const folder = emoji.get('file_folder');
-const disk = emoji.get('floppy_disk');
-const thumbsUp = emoji.get('thumbsup');
-const x = emoji.get('x');
+// Messages
+var foundLog = chalk.yellow('Log folder found...');
+var foundData = chalk.yellow('Data folder found...');
+var done = chalk.green.bold('Done!');
 
 // Initial request to get all link URLs
-console.log(`${emoji.get('frog')} `, chalk.bold.white.bgGreen('Content Scraper v1.0.0'));
-const url = 'http://www.shirts4mike.com';
-const route = 'shirts.php';
-request(`${url}/${route}`).then((body) => {
+console.log(chalk.bold.white.bgGreen('Content Scraper v1.0.0'));
+var url = 'http://www.shirts4mike.com';
+var route = 'shirts.php';
+request(url + '/' + route).then(function (body) {
   // Log success message
-  const connected = chalk.yellow(' Connected to ') + chalk.yellow.bold.underline(`${url}/${route}`);
-  console.log(computer, connected);
-  
-  // Push URLs to links array
-  const $ = cheerio.load(body);
-  const links = [];
-  $('.products').children().children().each((i, item) => links.push($(item).attr('href')));
-  
-  // Loop through links array and push each request to the requests array
-  const requests = [];
-  $(links).each((i, item) => requests.push(request(`${url}/${item}`)));
-  // Pass all link requests to Promise.all()
-  // Once all promises have been resolved, loop through responses and push data to results array
-  const results = [];
-  Promise.all(requests).then((responses) => {
-    $(responses).each((i, body) => {
-      const $ = cheerio.load(body);
-      results.push({
-        title: `${$('.shirt-details h1')[0].lastChild.data}`,
-        price: `${$('.shirt-details h1 span').text()}`,
-        imageurl: `${url}/${$('.shirt-picture span img').attr('src')}`,
-        url: `${requests[i].href}`,
-        time: `${moment().format('h:mm a')}`
-      });
-    });
-    
-    // This code runs after all promises have been resolved and each loop has finished
-    const fields = ['title', 'price', 'imageurl', 'url', 'time'];
-    const fieldNames = ['Title', 'Price', 'ImageURL', 'URL', 'Time'];
-    const options = { data: results, fields, fieldNames, quotes: '"' };
-    const fileName = `${moment().format('YYYY-MM-DD')}.csv`;
-    const csv = json2csv(options);
-    const foundData = chalk.yellow(' Data folder found...');
-    const writeCSV = chalk.yellow(` Overwriting ${fileName}...`);
-    const createCSV = chalk.yellow(` Creating ${fileName}...`);
-    const createData = chalk.yellow(' Creating new data folder...');
-    const done = chalk.green.bold(' Done!');
-    
-    // If data folder exists
-    if (isThere('./data')) {
-      console.log(folder, foundData);
-      
-      // If CSV exists, overwrite it
-      if (isThere(`./data/${fileName}`)) {
-        functions.writeDataFile(disk, writeCSV, fileName, csv);
-      
-      // If data folder exists, but CSV doesn't exist, create CSV
-      } else {
-        functions.createDataFile(disk, createCSV, fileName, csv);
-      }
-    
-    // If data folder and CSV do not exist, create both
-    } else {
-      functions.createDataFolderFile(folder, createData, disk, createCSV, fileName, csv);
-    }
-    
-    // Log done message
-    console.log(thumbsUp, done);
-  
-  
-  // Catch errors with link requests
-  // Add requests.push(undefined) on line 53 to test
-  }).catch(() => {
-    const error = chalk.red.bold(' Aborted: There was an error scraping one of the links.');
-    const errorLog = '404: Not Found - Error scraping one of the links.';
-    
-    // Log error message
-    console.log(x, error);
-    
-    // If log folder exists
-    if (isThere('./log')) {
-      console.log(folder, foundLog);
-      
-      // If log file exists, append error message
-      if (isThere('./log/scraper-error.log')) {
-        functions.appendLogFile(disk, appendError, date, errorLog);
+  var connected = chalk.yellow('Connected to ') + chalk.yellow.bold.underline(url + '/' + route);
+  console.log(connected);
 
-      // If log folder exists, but log file doesn't exist, create log file
-      } else {
-        functions.createLogFile(disk, createError, date, errorLog);
-      }
-    
-    // If log folder and log file do not exist, create both
-    } else {
-      functions.createLogFolderFile(folder, createLog, disk, createError, date, errorLog);
-    }
-    
-    // Log done message
-    console.log(thumbsUp, done);
+  // Push URLs to links array
+  var $ = cheerio.load(body);
+  var links = [];
+  $('.products').children().children().each(function (i, item) {
+    links.push($(item).attr('href'));
   });
 
+  // Loop through links array and push each request to the requests array
+  var requests = [];
+  requests.push(undefined);
+  $(links).each(function (i, item) {
+    requests.push(request(url + '/' + item));
+  });
 
-// Catch error with initial request
-// Change either url or route variables to undefined on line 39 test
-}).catch((response) => {
-  const $ = cheerio.load(response.message);
-  const statusMessage = $('h1').text();
-  const statusCode = response.statusCode;
-  const error = chalk.red(` Error (${statusCode || 'ENOTFOUND'}): Cannot connect to `) + chalk.red.bold.underline(`${url}/${route}`);
-  const errorLog = `${statusCode || 'ENOTFOUND'}: ${statusMessage || 'Not Found'} - Couldn't connect to ${url}/${route}`;
-  
+  // Pass all link requests to promise.all()
+  // Once all promises have been resolved, loop through responses and push data to results array
+  var results = [];
+  promise.all(requests).then(function (responses) {
+    $(responses).each(function (i, body) {
+      var $ = cheerio.load(body);
+      results.push({
+        title: '' + $('.shirt-details h1')[0].lastChild.data,
+        price: '' + $('.shirt-details h1 span').text(),
+        imageurl: url + '/' + $('.shirt-picture span img').attr('src'),
+        url: '' + requests[i].href,
+        time: '' + moment().format('h:mm a')
+      });
+    });
+
+    // This code runs after all promises have been resolved and each loop has finished
+    var fields = ['title', 'price', 'imageurl', 'url', 'time'];
+    var fieldNames = ['Title', 'Price', 'ImageURL', 'URL', 'Time'];
+    var options = { data: results, fields: fields, fieldNames: fieldNames, quotes: '"' };
+    var fileName = moment().format('YYYY-MM-DD') + '.csv';
+    var csv = json2csv(options);
+
+    // If data folder exists
+    if (isThere('./data')) {
+      console.log(foundData);
+
+      // If CSV exists, overwrite it
+      if (isThere('./data/' + fileName)) {
+        functions.writeDataFile(fileName, csv);
+
+        // If data folder exists, but CSV doesn't exist, create CSV
+      } else {
+        functions.createDataFile(fileName, csv);
+      }
+
+      // If data folder and CSV do not exist, create both
+    } else {
+      functions.createDataFolderFile(fileName, csv);
+    }
+
+    // Log done message
+    console.log(done);
+
+    // Catch errors with link requests
+    // Add requests.push(undefined) on line 53 to test
+  }).catch(function () {
+    var error = chalk.red.bold('Aborted: One of the links is down - please try again later...');
+    var errorLog = '404: Not Found - Error scraping one of the links.';
+
+    // Log error message
+    console.log(error);
+
+    // If log folder exists
+    if (isThere('./log')) {
+      console.log(foundLog);
+
+      // If log file exists, append error message
+      if (isThere('./log/scraper-error.log')) {
+        functions.appendLogFile();
+
+        // If log folder exists, but log file doesn't exist, create log file
+      } else {
+        functions.createLogFile();
+      }
+
+      // If log folder and log file do not exist, create both
+    } else {
+      functions.createLogFolderFile();
+    }
+
+    // Log done message
+    console.log(done);
+  });
+
+  // Catch error with initial request
+  // Change either url or route variables to undefined on line 39 test
+}).catch(function (response) {
+  var $ = cheerio.load(response.message);
+  var statusMessage = $('h1').text();
+  var statusCode = response.statusCode;
+  var error = chalk.red('Error (' + (statusCode || 'ENOTFOUND') + '): Cannot connect to ') + chalk.red.bold.underline(url + '/' + route);
+  var errorLog = (statusCode || 'ENOTFOUND') + ': ' + (statusMessage || 'Not Found') + ' - Couldn\'t connect to ' + url + '/' + route;
+
   // Log error message
-  console.log(x, error);
-  
+  console.log(error);
+
   // If log folder exists
   if (isThere('./log')) {
-    console.log(folder, foundLog);
-    
+    console.log(foundLog);
+
     // If log file exists, append error message
     if (isThere('./log/scraper-error.log')) {
-      functions.appendLogFile(disk, appendError, date, errorLog);
-    
-    // If log folder exists, but log file doesn't exist, create log file
+      functions.appendLogFile();
+
+      // If log folder exists, but log file doesn't exist, create log file
     } else {
-      functions.createLogFile(disk, createError, date, errorLog);
+      functions.createLogFile();
     }
-  
-  // If log folder and log file do not exist, create both
+
+    // If log folder and log file do not exist, create both
   } else {
-    functions.createLogFolderFile(folder, createLog, disk, createError, date, errorLog);
+    functions.createLogFolderFile();
   }
-  
+
   // Log done message
-  console.log(thumbsUp, done);
+  console.log(done);
 });
