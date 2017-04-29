@@ -44,7 +44,6 @@ request(url + '/' + route).then(function (body) {
 
   // Loop through links array and push each request to the requests array
   var requests = [];
-  requests.push(undefined);
   $(links).each(function (i, item) {
     requests.push(request(url + '/' + item));
   });
