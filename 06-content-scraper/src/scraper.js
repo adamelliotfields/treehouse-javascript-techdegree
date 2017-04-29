@@ -2,7 +2,7 @@
 
 /**
  * 'request-promise-native' wraps the request package with native ES6 promise support
- * 'node-emoji' adds emoji to command line output
+ * 'bluebird' adds promise support to older versions of JavaScript
  * 'chalk' adds text styling to command line output
  * 'cheerio' parses HTML and allows DOM traversal and manipulation using jQuery syntax (3M+ dl/mo)
  * 'moment' parses and displays dates and times
