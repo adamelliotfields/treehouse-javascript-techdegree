@@ -9,22 +9,22 @@
 
 #### Quote Object
 :white_check_mark: Objects in array include `quote`, `source`, `citation`, and `date` properties.  
-:white_check_mark: Objects in array include additional properties, such as categorization tags.
+:white_check_mark: Objects in array include additional properties, such as categorization tags.  
 
 #### `getRandomQuote()` Function
 :white_check_mark: Function is named `getRandomQuote()` and returns a random object from the quotes array.  
-:white_check_mark: `getRandomQuote()` function does not return a duplicate quote untill all quotes have been returned once.
+:white_check_mark: `getRandomQuote()` function does not return a duplicate quote untill all quotes have been returned once.  
 
 #### `printQuote()` Function
 :white_check_mark: `printQuote()` function calls the `getRandomQuote()` function.  
 :white_check_mark: `printQuote()` function prints the quote to the page.  
 :white_check_mark: Quotes change automatically after a certain amount of time passes.  
-:white_check_mark: Background color changes each time the quote changes.
+:white_check_mark: Background color changes each time the quote changes.  
 
 #### Code Comments
-:white_check_mark: Comments are included in the code.
+:white_check_mark: Comments are included in the code.  
 
-
-### Live Demo
-
-[index.html](https://adamelliotfields.github.io/treehouse-javascript-techdegree/01-random-quote-generator/index.html)
+### Instructions
+1. Download and extract the [zip](https://github.com/adamelliotfields/treehouse-javascript-techdegree/raw/master/01-random-quote-generator/random-quote-generator.zip).
+2. Run `yarn install`.
+3. Run `yarn start`.
