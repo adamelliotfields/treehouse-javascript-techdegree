@@ -1,0 +1,12 @@
+{
+  "name": "05-search-app",
+  "version": "1.0.0",
+  "main": "index.html",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  },
+  "scripts": {
+    "start": "browser-sync start --server --https --cors"
+  }
+}
