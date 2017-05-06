@@ -24,7 +24,7 @@
     "uncss": "^0.14.1"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "gulp --gulpfile ./build/gulpfile.js --cwd ./build/",
     "start": "node app.js"
   }
 }

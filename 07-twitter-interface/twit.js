@@ -1,9 +1,11 @@
-const Twit = require('twit');
+'use strict';
 
-const api = require('./config');
+var Twit = require('twit');
 
-const T = new Twit(api.key);
+var api = require('./config');
 
-T.get('direct_messages', { count: 1 }, (err, data, response) => {
+var T = new Twit(api.key);
+
+T.get('direct_messages', { count: 1 }, function (err, data, response) {
   console.log(data);
 });
