@@ -5,7 +5,7 @@ each item in tweets
       .app--avatar(style='background-image: url(' + item.profileImageURL + ')')
         img(src= item.profileImageURL)
       h4= item.name
-      p= '@' + item.screenName
+      a= '@' + item.screenName
     p= item.text
     ul.app--tweet--actions.circle--list--inline
       li

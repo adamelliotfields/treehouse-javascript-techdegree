@@ -31,7 +31,9 @@
     "uncss": "^0.14.1"
   },
   "scripts": {
-    "build": "gulp --gulpfile ./build/gulpfile.js --cwd ./build/",
+    "build:js": "gulp default --gulpfile ./build/gulpfile.js --cwd ./build/",
+    "build:css": "gulp postcss --gulpfile ./build/gulpfile.js --cwd ./build/",
+    "build:pug": "gulp pug --gulpfile ./build/gulpfile.js --cwd ./build/",
     "watch": "concurrently \"nodemon app.js\" \"gulp watch --gulpfile ./build/gulpfile.js --cwd ./build/\"",
     "start": "node app.js"
   }

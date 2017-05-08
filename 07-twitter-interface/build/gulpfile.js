@@ -5,6 +5,13 @@ const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 const postcss = require('gulp-postcss');
 
+gulp.task('default', () =>
+  gulp.src('../src/js/*.js')
+    .pipe(newer('../'))
+    .pipe(babel())
+    .pipe(gulp.dest('../'))
+);
+
 gulp.task('templates', () =>
   gulp.src('../src/html/*.html')
   .pipe(newer('../dist/templates'))
@@ -25,24 +32,18 @@ gulp.task('includes', () =>
     .pipe(gulp.dest('../dist/templates/includes'))
 );
 
-// Requires server to be running and src/css to be served instead of public/css
+gulp.task('pug', ['templates', 'includes']);
+
+// Requires server to be running on localhost:8080
+// Requires src/css to be served in app.js
 gulp.task('postcss', () =>
   gulp.src('../src/css/global.css')
     .pipe(newer('../public/css'))
     .pipe(postcss())
-    .pipe(rename((path) => {
-      path.extname = '.min.css';
-    }))
     .pipe(gulp.dest('../public/css'))
 );
 
-gulp.task('default', () =>
-  gulp.src('../src/js/*.js')
-    .pipe(newer('../'))
-    .pipe(babel())
-    .pipe(gulp.dest('../'))
-);
-
+// Watches src/js for changes
 gulp.task('watch', () => {
   gulp.watch('../src/js/*.js', ['default']);
 });
