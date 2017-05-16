@@ -49,9 +49,9 @@ gulp.task('images', ['styles'], () =>
 
 gulp.task('copy', ['images'], () => {
   gulp.src('src/icons/**/*')
-    .pipe(gulp.dest('dist/icons'))
+    .pipe(gulp.dest('dist/icons'));
   gulp.src('src/lib/*')
-    .pipe(gulp.dest('dist/lib'))
+    .pipe(gulp.dest('dist/lib'));
 });
 
 gulp.task('build', ['copy']);
@@ -65,7 +65,7 @@ gulp.task('watch', ['build'], () =>
         .pipe(sass({ outputStyle: 'compressed' }))
         .pipe(rename('all.min.css'))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('dist/styles'))
+        .pipe(gulp.dest('dist/styles'));
     })
 );
 

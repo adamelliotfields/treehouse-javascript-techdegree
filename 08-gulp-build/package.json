@@ -34,6 +34,12 @@
     "gulp-uglify": "^2.1.2"
   },
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "clean": "gulp clean",
+    "scripts": "gulp scripts",
+    "styles": "gulp styles",
+    "images": "gulp images"
   }
 }
