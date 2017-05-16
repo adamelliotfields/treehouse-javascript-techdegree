@@ -1,0 +1,11 @@
+each item in users
+  li
+    .circle--fluid
+      .circle--fluid--cell.circle--fluid--primary
+        a.app--tweet--author
+          .app--avatar(style='background-image: url(' + item.profileImageURL + ')')
+            img(src= item.profileImageURL)
+          h4= item.name
+          a= '@' + item.screenName
+      .circle--fluid--cell
+        a.button.button-text Unfollow
