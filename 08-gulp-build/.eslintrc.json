@@ -1,4 +1,0 @@
-{
-  "env": { "jquery": true },
-  "extends": ["semistandard"]
-}
