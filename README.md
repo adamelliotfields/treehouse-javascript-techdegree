@@ -26,6 +26,5 @@
 7.  **[Build a Twitter Interface](https://github.com/adamelliotfields/treehouse-twitter-interface)**
 8.  **[Using Gulp to Build a Front End Website](https://github.com/adamelliotfields/treehouse-gulp-build)**
 9.  **[Single Page App](https://github.com/adamelliotfields/treehouse-angular-spa)**
-10. **[Build a Library Manager]()**
-11. **[Build a Course Rating API with Express]()**
-12. **[Capstone Project]()**
+10. **[Build a Library Manager](https://github.com/adamelliotfields/treehouse-library-manager)**
+11. **[Build a Course Rating API with Express](https://github.com/adamelliotfields/treehouse-course-rating-api)**
