@@ -1,0 +1,30 @@
+{
+  "name": "treehouse-course-rating-api",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "repository": "https://github.com/adamelliotfields/treehouse-course-rating-api.git",
+  "author": "Adam Fields <adam.elliot.fields@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "basic-auth": "^1.1.0",
+    "bcrypt": "^1.0.2",
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.2",
+    "co": "^4.6.0",
+    "connect-mongo": "^1.3.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.11.0",
+    "mongoose-seeder": "^1.2.1",
+    "mongoose-unique-validator": "^1.0.5",
+    "morgan": "^1.8.2",
+    "validator": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  }
+}

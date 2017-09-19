@@ -1,0 +1,189 @@
+<div class="grid-100 row controls">
+  <div class="grid-50">
+    <h2>{{mode == "add" ? "Add New Recipe" : recipe.name}}</h2>
+  </div>
+  <div class="grid-50">
+    <div class="flush-right">
+      <button ng-click="saveRecipe()">Save Recipe</button>
+      <button ng-click="showRecipes()" class="secondary">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div ng-if="errors.length > 0" class="grid-100 row">
+  <div class="grid-100">
+    <p><i>The following errors were found:</i></p>
+    <ul class="validation-errors">
+      <li ng-repeat="error in errors">
+        {{error.userMessage}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Name </label>
+    </p>
+  </div>
+  <div class="grid-40">
+    <p>
+      <input ng-model="recipe.name" type="text">
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Description </label>
+    </p>
+  </div>
+  <div class="grid-60">
+    <p>
+      <textarea ng-model="recipe.description"></textarea>
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Category </label>
+    </p>
+  </div>
+  <div class="grid-30">
+    <p>
+      <select ng-model="recipe.category">
+        <option ng-repeat="category in categories" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Prep Time </label>
+    </p>
+  </div>
+  <div class="grid-20">
+    <p>
+      <input ng-model="recipe.prepTime" type="number">
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Cook Time </label>
+    </p>
+  </div>
+  <div class="grid-20">
+    <p>
+      <input ng-model="recipe.cookTime" type="number">
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Ingredients </label>
+    </p>
+  </div>
+  <div class="grid-30">
+    <p class="label-spacing">
+      <label> Item </label>
+    </p>
+  </div>
+  <div class="grid-30">
+    <p class="label-spacing">
+      <label> Condition </label>
+    </p>
+  </div>
+  <div class="grid-15">
+    <p class="label-spacing">
+      <label> Amount </label>
+    </p>
+  </div>
+  <div ng-repeat="ingredient in recipe.ingredients" class="ingredient-row">
+    <div class="prefix-20 grid-30">
+      <p>
+        <select ng-model="ingredient.foodItem">
+          <option ng-repeat="foodItem in foodItems" value="{{foodItem.name}}">{{foodItem.name}}</option>
+        </select>
+      </p>
+    </div>
+    <div class="grid-30">
+      <p>
+        <input ng-model="ingredient.condition" type="text">
+      </p>
+    </div>
+    <div class="grid-15">
+      <p>
+        <input ng-model="ingredient.amount" type="text">
+      </p>
+    </div>
+    <div class="grid-5 pad-top">
+      <p class="flush-right">
+        <a ng-click="deleteIngredient($index)" class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
+      </p>
+    </div>
+  </div>
+  <div class="prefix-20 grid-80 add-row">
+    <p>
+      <button ng-click="addIngredient()">+ Add Another Ingredient</button>
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<div class="grid-100 row">
+  <div class="grid-20">
+    <p class="label-spacing">
+      <label> Steps </label>
+    </p>
+  </div>
+  <div class="grid-75">
+    <p class="label-spacing">
+      <label> Description </label>
+    </p>
+  </div>
+  <div ng-repeat="step in recipe.steps" class="step-row">
+    <div class="prefix-20 grid-75">
+      <p>
+        <input ng-model="step.description" type="text">
+      </p>
+    </div>
+    <div class="grid-5 pad-top">
+      <p class="flush-right">
+        <a ng-click="deleteStep($index)" class="no-action-link"> <img src="images/delete.svg" height="12px"> </a>
+      </p>
+    </div>
+  </div>
+  <div class="prefix-20 grid-80 add-row">
+    <p>
+      <button ng-click="addStep()">+ Add Another Step</button>
+    </p>
+  </div>
+</div>
+
+<div class="clear"></div>

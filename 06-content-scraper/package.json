@@ -1,0 +1,29 @@
+{
+  "name": "content-scraper",
+  "version": "1.0.0",
+  "description": "A command-line web scraper built with Node.",
+  "main": "scraper.js",
+  "repository": "https://github.com/adamelliotfields/treehouse-javascript-techdegree.git",
+  "author": "Adam Fields",
+  "license": "MIT",
+  "engines": { "node": ">=4.8.2" },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "chalk": "^1.1.3",
+    "cheerio": "^0.22.0",
+    "is-there": "^4.4.2",
+    "json2csv": "^3.7.3",
+    "moment": "^2.18.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "babel": { "presets": [ "es2015" ] },
+  "scripts": {
+    "build": "babel src -d ./",
+    "start": "node scraper.js"
+  }
+}

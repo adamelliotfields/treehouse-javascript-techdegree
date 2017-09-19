@@ -1,0 +1,24 @@
+{
+  "name": "treehouse-angular-spa",
+  "version": "0.0.1",
+  "main": "server/index.js",
+  "repository": "https://github.com/adamelliotfields/treehouse-angular-spa.git",
+  "author": "Adam Fields <adam.elliot.fields@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "nedb": "^1.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "node ./server/index.js localhost 5000",
+    "nodemon": "nodemon ./server/index.js localhost 5000",
+    "db": "node ./server/data/seed.js"
+  }
+}

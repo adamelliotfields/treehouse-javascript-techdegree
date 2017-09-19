@@ -1,0 +1,26 @@
+{
+  "name": "treehouse-library-manager",
+  "version": "0.0.1",
+  "main": "app.js",
+  "repository": "https://github.com/adamelliotfields/treehouse-library-manager.git",
+  "author": "Adam Fields <adam.elliot.fields@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "co": "^4.6.0",
+    "express": "^4.15.3",
+    "method-override": "^2.3.9",
+    "moment": "^2.18.1",
+    "pug": "^2.0.0-rc.2",
+    "sequelize": "^3.30.4",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.0",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node --use_strict app.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon app.js"
+  }
+}

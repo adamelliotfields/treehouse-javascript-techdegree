@@ -1,0 +1,45 @@
+{
+  "name": "gulp-build",
+  "version": "0.0.1",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "connect-livereload": "^0.6.0",
+    "express": "^4.15.2",
+    "livereload": "^0.6.2",
+    "opn": "^5.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-engine": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "del": "^2.2.2",
+    "eslint-config-semistandard": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.6.3",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^2.1.2"
+  },
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "clean": "gulp clean",
+    "scripts": "gulp scripts",
+    "styles": "gulp styles",
+    "images": "gulp images"
+  }
+}
