@@ -1,5 +1,5 @@
 // IIFE
-(function game() {
+(() => {
   const gameBoard = `
     <div class="board" id="board">
       <header>
@@ -61,10 +61,13 @@
     $('.container').empty();
     $('.container').append(gameBoard);
     $('#player1').addClass('active');
+
     name = prompt('What is your name?');
+
     if (name) {
       $('#player1 h4').html(name);
     }
+
     computerMoves = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     playing = true;
     turn = 0;
@@ -75,9 +78,11 @@
     $('.container').empty();
     $('.container').append(gameBoard);
     $('#player1').addClass('active');
+
     if (name) {
       $('#player1 h4').html(name);
     }
+
     computerMoves = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     playing = true;
     turn = 0;
@@ -90,11 +95,14 @@
       // Player 1 functionality
       if (turn % 2 === 0) {
         turn += 1;
+
         $(event.target).addClass('filled box-filled-1');
         $('#player1').removeClass('active');
         $('#player2').addClass('active');
+
         // Remove the number from the list of possible computer moves
         computerMoves.splice(computerMoves.indexOf(parseInt($(event.target).attr('id'))), 1);
+
         // The items of each array align with the IDs of each box
         winningMoves.forEach((item) => {
           // Append the winning screen and end the game if there is a match
@@ -102,20 +110,26 @@
             $('.container').empty().append(gameWin);
             $('p').text(`${name} wins!`);
             $('.screen-win').addClass('screen-win-one');
+
             playing = false;
           }
         });
       }
+
       // Computer functionality
       if (turn % 2 !== 0 && turn < 9) {
-        turn += 1;
         // Get a random index of the remaining available moves and fill the corresponding box ID
         const random = Math.floor(Math.random() * computerMoves.length);
+
+        turn += 1;
+
         $(`#${computerMoves[random]}`).addClass('filled box-filled-2');
         $('#player2').removeClass('active');
         $('#player1').addClass('active');
+
         // Remove the number from the list of possible computer moves
         computerMoves.splice(computerMoves.indexOf(computerMoves[random]), 1);
+
         // Check if the computer beat you
         winningMoves.forEach((item) => {
           // Append the winning screen and end the game if there is a match
@@ -123,16 +137,19 @@
             $('.container').empty().append(gameWin);
             $('p').text('Computer wins!');
             $('.screen-win').addClass('screen-win-two');
+
             playing = false;
           }
         });
       }
     }
+
     // If all boxes are filled and no winner was found, append the tie screen
     if (playing === true && turn === 9) {
       $('.container').empty().append(gameWin);
       $('p').text("It's a Tie");
       $('.screen-win').addClass('screen-win-tie');
+
       playing = false;
     }
   });
@@ -154,4 +171,4 @@
       }
     }
   });
-}());
+})();
